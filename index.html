@@ -1,101 +1,55 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Te Amo Zaira ♥️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Zaira ♥️</title>
   <style>
     body {
       margin: 0;
-      background: black;
+      padding: 0;
+      background-color: #000;
       overflow: hidden;
-    }
-    .corazon, .mensaje-toque {
-      position: absolute;
-      color: pink;
-      font-size: 25px;
-      animation: flotar 5s linear infinite;
-      pointer-events: none;
-    }
-    .mensaje-toque {
-      font-size: 20px;
-      animation: aparecer 2s ease-out forwards;
-    }
-    .mensaje {
-      position: absolute;
-      top: 40%;
-      width: 100%;
-      text-align: center;
-      font-size: 40px;
-      color: pink;
-      font-family: cursive;
-    }
-    .submensaje {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      text-align: center;
-      font-size: 24px;
-      color: pink;
-      font-family: cursive;
-    }
-    @keyframes flotar {
-      0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 0;
-      }
-    }
-    @keyframes aparecer {
-      0% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-40px) scale(1.2);
-        opacity: 0;
-      }
-    }
+      font-family: 'Arial', sans-serif;
+    }.message {
+  position: absolute;
+  color: #fff;
+  font-size: 24px;
+  animation: explode 1s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
   </style>
 </head>
-<body>
-  <div class="mensaje">TE AMO ZAIRA ♥️</div>
-  <div class="submensaje">De parte de tu memé</div>
+<body><audio autoplay loop>
+  <source src="https://dl.dropboxusercontent.com/scl/fi/q70fpxx9d6a5ag65pw41u/Wonderwall-Oasis.mp3?rlkey=3t6r8bmubgqzy0eexwdyyyn0x&st=sskgdkw2" type="audio/mpeg">
+  Tu navegador no soporta audio HTML5.
+</audio><script>
+  document.body.addEventListener('click', function(e) {
+    const msg = document.createElement('div');
+    msg.className = 'message';
+    msg.textContent = 'TE AMO ZAIRA ♥️';
+    msg.style.left = (e.clientX - 50) + 'px';
+    msg.style.top = (e.clientY - 20) + 'px';
+    document.body.appendChild(msg);
 
-  <script>
-    // Corazones flotando
-    const crearCorazon = () => {
-      const corazon = document.createElement("div");
-      corazon.classList.add("corazon");
-      corazon.innerText = "♥️";
-      corazon.style.left = Math.random() * 100 + "vw";
-      corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
-      document.body.appendChild(corazon);
-      setTimeout(() => corazon.remove(), 5000);
-    };
-    setInterval(crearCorazon, 200);
-
-    // Mensaje al tocar la pantalla
-    const mostrarMensaje = (x, y) => {
-      const msg = document.createElement("div");
-      msg.classList.add("mensaje-toque");
-      msg.innerText = "TE AMO ZAIRA ♥️";
-      msg.style.left = x + "px";
-      msg.style.top = y + "px";
-      document.body.appendChild(msg);
-      setTimeout(() => msg.remove(), 2000);
-    };
-
-    document.addEventListener("click", e => {
-      mostrarMensaje(e.clientX, e.clientY);
-    });
-
-    document.addEventListener("touchstart", e => {
-      const touch = e.touches[0];
-      mostrarMensaje(touch.clientX, touch.clientY);
-    });
-  </script>
-</body>
+    setTimeout(() => {
+      msg.remove();
+    }, 1000);
+  });
+</script></body>
 </html>
