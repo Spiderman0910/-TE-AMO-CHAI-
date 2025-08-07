@@ -1,58 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Te Amo Zaira ♥️</title>
   <style>
     body {
       margin: 0;
-      background-color: black;
-      height: 100vh;
+      background: black;
       overflow: hidden;
-      cursor: pointer;
     }
-
-    .mensaje {
+    .corazon, .mensaje-toque {
       position: absolute;
-      color: white;
-      font-size: 30px;
-      font-family: Arial, sans-serif;
-      animation: explotar 1s ease-out forwards;
+      color: pink;
+      font-size: 25px;
+      animation: flotar 5s linear infinite;
       pointer-events: none;
     }
-
-    @keyframes explotar {
+    .mensaje-toque {
+      font-size: 20px;
+      animation: aparecer 2s ease-out forwards;
+    }
+    .mensaje {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      color: pink;
+      font-family: cursive;
+    }
+    .submensaje {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      text-align: center;
+      font-size: 24px;
+      color: pink;
+      font-family: cursive;
+    }
+    @keyframes flotar {
       0% {
-        transform: scale(0.5);
-        opacity: 0;
-      }
-      50% {
-        transform: scale(1.5);
+        transform: translateY(100vh) scale(1);
         opacity: 1;
       }
       100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+    @keyframes aparecer {
+      0% {
         transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-40px) scale(1.2);
         opacity: 0;
       }
     }
   </style>
 </head>
 <body>
+  <div class="mensaje">TE AMO ZAIRA ♥️</div>
+  <div class="submensaje">De parte de tu memé</div>
 
-<script>
-  document.body.addEventListener("click", function(e) {
-    const mensaje = document.createElement("div");
-    mensaje.className = "mensaje";
-    mensaje.innerText = "TE AMO ZAIRA ♥️";
-    mensaje.style.left = `${e.clientX - 100}px`;
-    mensaje.style.top = `${e.clientY - 20}px`;
-    document.body.appendChild(mensaje);
+  <script>
+    // Corazones flotando
+    const crearCorazon = () => {
+      const corazon = document.createElement("div");
+      corazon.classList.add("corazon");
+      corazon.innerText = "♥️";
+      corazon.style.left = Math.random() * 100 + "vw";
+      corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(corazon);
+      setTimeout(() => corazon.remove(), 5000);
+    };
+    setInterval(crearCorazon, 200);
 
-    setTimeout(() => {
-      mensaje.remove();
-    }, 1000);
-  });
-</script>
+    // Mensaje al tocar la pantalla
+    const mostrarMensaje = (x, y) => {
+      const msg = document.createElement("div");
+      msg.classList.add("mensaje-toque");
+      msg.innerText = "TE AMO ZAIRA ♥️";
+      msg.style.left = x + "px";
+      msg.style.top = y + "px";
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 2000);
+    };
 
+    document.addEventListener("click", e => {
+      mostrarMensaje(e.clientX, e.clientY);
+    });
+
+    document.addEventListener("touchstart", e => {
+      const touch = e.touches[0];
+      mostrarMensaje(touch.clientX, touch.clientY);
+    });
+  </script>
 </body>
 </html>
