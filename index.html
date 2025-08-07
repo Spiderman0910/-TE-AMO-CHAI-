@@ -1,55 +1,58 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Zaira ♥️</title>
+  <title>Te Amo Zaira ♥️</title>
   <style>
     body {
       margin: 0;
-      padding: 0;
-      background-color: #000;
+      background-color: black;
+      height: 100vh;
       overflow: hidden;
-      font-family: 'Arial', sans-serif;
-    }.message {
-  position: absolute;
-  color: #fff;
-  font-size: 24px;
-  animation: explode 1s ease-out forwards;
-  pointer-events: none;
-}
+      cursor: pointer;
+    }
 
-@keyframes explode {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.5);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
+    .mensaje {
+      position: absolute;
+      color: white;
+      font-size: 30px;
+      font-family: Arial, sans-serif;
+      animation: explotar 1s ease-out forwards;
+      pointer-events: none;
+    }
 
+    @keyframes explotar {
+      0% {
+        transform: scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
-<body><audio autoplay loop>
-  <source src="https://dl.dropboxusercontent.com/scl/fi/q70fpxx9d6a5ag65pw41u/Wonderwall-Oasis.mp3?rlkey=3t6r8bmubgqzy0eexwdyyyn0x&st=sskgdkw2" type="audio/mpeg">
-  Tu navegador no soporta audio HTML5.
-</audio><script>
-  document.body.addEventListener('click', function(e) {
-    const msg = document.createElement('div');
-    msg.className = 'message';
-    msg.textContent = 'TE AMO ZAIRA ♥️';
-    msg.style.left = (e.clientX - 50) + 'px';
-    msg.style.top = (e.clientY - 20) + 'px';
-    document.body.appendChild(msg);
+<body>
+
+<script>
+  document.body.addEventListener("click", function(e) {
+    const mensaje = document.createElement("div");
+    mensaje.className = "mensaje";
+    mensaje.innerText = "TE AMO ZAIRA ♥️";
+    mensaje.style.left = `${e.clientX - 100}px`;
+    mensaje.style.top = `${e.clientY - 20}px`;
+    document.body.appendChild(mensaje);
 
     setTimeout(() => {
-      msg.remove();
+      mensaje.remove();
     }, 1000);
   });
-</script></body>
+</script>
+
+</body>
 </html>
