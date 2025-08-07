@@ -1,8 +1,9 @@
-<!DOCTYPE html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Zaira</title>
+  <title>Para mi Chai</title>
   <style>
     body {
       margin: 0;
@@ -10,53 +11,58 @@
       overflow: hidden;
       font-family: 'Arial', sans-serif;
       color: white;
-    }.mensaje-central {
-  position: absolute;
-  top: 40%;
-  width: 100%;
-  text-align: center;
-  font-size: 2em;
-  font-weight: bold;
-  color: pink;
-  z-index: 10;
-  animation: latido 1.5s infinite;
-}
+    }
 
-@keyframes latido {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-}
+    .mensaje-central {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+      color: pink;
+      z-index: 10;
+      animation: latido 1.5s infinite;
+    }
 
-.corazon {
-  position: absolute;
-  color: red;
-  font-size: 20px;
-  animation: caer 5s linear infinite;
-}
+    @keyframes latido {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
 
-@keyframes caer {
-  0% { transform: translateY(-100px); opacity: 1; }
-  100% { transform: translateY(100vh); opacity: 0; }
-}
+    .corazon {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: caer 5s linear infinite;
+    }
 
-.mensaje-toque {
-  position: absolute;
-  font-size: 1.5em;
-  color: #ff66cc;
-  font-weight: bold;
-  animation: explotar 1.2s ease-out forwards;
-  pointer-events: none;
-}
+    @keyframes caer {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
 
-@keyframes explotar {
-  0% { transform: scale(0); opacity: 1; }
-  50% { transform: scale(1.4); opacity: 1; }
-  100% { transform: scale(0); opacity: 0; }
-}
+    .mensaje-toque {
+      position: absolute;
+      font-size: 1.5em;
+      color: #ff66cc;
+      font-weight: bold;
+      animation: explotar 1.2s ease-out forwards;
+      pointer-events: none;
+    }
 
+    @keyframes explotar {
+      0% { transform: scale(0); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 1; }
+      100% { transform: scale(0); opacity: 0; }
+    }
   </style>
 </head>
-<body>  <div class="mensaje-central">TE AMO ZAIRA ❤️</div>  <script>
+<body>
+
+  <div class="mensaje-central">TE AMO ZAIRA ❤️</div>
+
+  <script>
     // Lluvia de corazones
     function crearCorazon() {
       const corazon = document.createElement('div');
@@ -86,5 +92,6 @@
         msg.remove();
       }, 1200);
     });
-  </script></body>
+  </script>
+</body>
 </html>
