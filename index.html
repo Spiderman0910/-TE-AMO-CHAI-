@@ -1,56 +1,90 @@
-<!DOCTYPE html>
-<html lang="es">
+<!DOCTYPE html><html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <title>Te Amo 💖</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Zaira</title>
   <style>
     body {
       margin: 0;
-      background: black;
+      background-color: black;
       overflow: hidden;
-    }
-    .corazon {
-      position: absolute;
-      color: pink;
-      font-size: 25px;
-      animation: flotar 5s linear infinite;
-    }
-    @keyframes flotar {
-      0% {
-        transform: translateY(100vh) scale(1);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(-10vh) scale(1.5);
-        opacity: 0;
-      }
-    }
-    .mensaje {
-      position: absolute;
-      top: 40%;
-      width: 100%;
-      text-align: center;
-      font-size: 40px;
-      color: pink;
-      font-family: cursive;
-    }
+      font-family: 'Arial', sans-serif;
+      color: white;
+    }.mensaje-central {
+  position: absolute;
+  top: 40%;
+  width: 100%;
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  color: pink;
+  z-index: 10;
+  animation: latido 1.5s infinite;
+}
+
+@keyframes latido {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+.corazon {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: caer 5s linear infinite;
+}
+
+@keyframes caer {
+  0% { transform: translateY(-100px); opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+.mensaje-toque {
+  position: absolute;
+  font-size: 1.5em;
+  color: #ff66cc;
+  font-weight: bold;
+  animation: explotar 1.2s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes explotar {
+  0% { transform: scale(0); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
   </style>
 </head>
-<body>
-  <div class="mensaje">TE AMO, <strong>SOFÍA 💖</strong></div>
-  <script>
-    const crearCorazon = () => {
-      const corazon = document.createElement("div");
-      corazon.classList.add("corazon");
-      corazon.innerText = "💖";
-      corazon.style.left = Math.random() * 100 + "vw";
-      corazon.style.animationDuration = (Math.random() * 3 + 2) + "s";
+<body>  <div class="mensaje-central">TE AMO ZAIRA ❤️</div>  <script>
+    // Lluvia de corazones
+    function crearCorazon() {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon');
+      corazon.textContent = '❤️';
+      corazon.style.left = Math.random() * 100 + 'vw';
+      corazon.style.fontSize = (Math.random() * 20 + 10) + 'px';
+      corazon.style.animationDuration = (Math.random() * 3 + 2) + 's';
       document.body.appendChild(corazon);
+
       setTimeout(() => {
         corazon.remove();
       }, 5000);
-    };
+    }
     setInterval(crearCorazon, 200);
-  </script>
-</body>
+
+    // Mensaje animado al tocar o hacer clic
+    document.addEventListener('click', (e) => {
+      const msg = document.createElement('div');
+      msg.classList.add('mensaje-toque');
+      msg.textContent = 'TE AMO ZAIRA ❤️';
+      msg.style.left = (e.clientX - 50) + 'px';
+      msg.style.top = (e.clientY - 20) + 'px';
+      document.body.appendChild(msg);
+
+      setTimeout(() => {
+        msg.remove();
+      }, 1200);
+    });
+  </script></body>
 </html>
